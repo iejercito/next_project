@@ -9,7 +9,7 @@ class Main extends CI_Controller {
 	{
 		parent::__construct();
 		//for user session information
-		$this->view_data['user_session'] = $this->user_session = $this->session->userdata('user_session');
+		$view_data["user_session"] = $this->user_session = $this->session->userdata('user_session');
 		$this->output->enable_profiler(FALSE);
 	}
 
@@ -40,9 +40,6 @@ class Main extends CI_Controller {
 				
 			//this sets array $user to pass the array info to session user_session 
 			$this->session->set_userdata('user_session', $user);
-			//$this->session->userdata is to set particular index in another variable to use
-			$this->view_data = $this->user_session = $this->session->userdata('user_session');
-			
 			$this->is_logged_in();
 		}
 		else
