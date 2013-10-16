@@ -8,7 +8,7 @@ class Main extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//for user session information
+		
 		$view_data["user_session"] = $this->user_session = $this->session->userdata('user_session');
 		$this->output->enable_profiler(FALSE);
 	}
@@ -30,6 +30,8 @@ class Main extends CI_Controller {
 
 		if($check_user->result_count() > 0)
 		{
+			$data['status'] = TRUE;
+			$data['location'] = base_url("/users/profile");
 			
 			$user = array(
 					'email' => $check_user->email,  
@@ -40,7 +42,6 @@ class Main extends CI_Controller {
 				
 			//this sets array $user to pass the array info to session user_session 
 			$this->session->set_userdata('user_session', $user);
-			$this->is_logged_in();
 		}
 		else
 		{

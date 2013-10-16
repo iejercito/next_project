@@ -23,6 +23,7 @@ class User extends DataMapper{
 		)
 	);
 	
+	
 	public function p_save($user)
 	{
 		$new_user = elements(array('first_name', 'last_name', 'email','password'), $user, NULL);

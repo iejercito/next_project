@@ -16,8 +16,7 @@ class Users extends Main{
 		
 	public function profile()
 	{	
-		var_dump($this->user_session['first_name']);
-		// $this->load->view('profile');
+		$this->load->view('profile');
 	}
 	
 	
