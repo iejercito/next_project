@@ -15,19 +15,9 @@ class Users extends Main{
 	}
 		
 	public function profile()
-	{
-		/* 	$array = array(
-			'color' => 'red',
-			'shape' => 'round',
-			'height' => FALSE,
-			'ip' => FALSE
-		);
-		
-		$my_shape = elements(array('color', 'shape', 'height','ip'), $array, NULL);
-		
-		var_dump($my_shape); */
-		
-		$this->load->view('profile');
+	{	
+		var_dump($this->user_session['first_name']);
+		// $this->load->view('profile');
 	}
 	
 	

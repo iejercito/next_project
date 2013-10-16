@@ -32,7 +32,6 @@
 				<span id="topic_text">Topic</span>
 			</h3>
 			<span class="login_text" >Login</span>
-			<div class="login_border"></div>
 			<fieldset>
 			<form action="/main/process_login" method="post" class="form-horizontal" id="login_form">
 				<div class="control-group">
@@ -57,7 +56,6 @@
 			</form>
 			</fieldset>
 			<span class="login_text">Or</span>
-			<div class="login_border"></div>
 			<img src="./assets/images/fb_login.png"  alt="" class="pull-right"/>
 			<div class="clearfix"></div>
 		</div>
