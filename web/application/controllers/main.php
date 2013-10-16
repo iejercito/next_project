@@ -9,7 +9,7 @@ class Main extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$view_data["user_session"] = $this->user_session = $this->session->userdata('user_session');
+		$view_data["user_session"] = $this->user_session = $this->session-userdata('user_session');
 		$this->output->enable_profiler(FALSE);
 	}
 
@@ -23,10 +23,10 @@ class Main extends CI_Controller {
 		$user = new User();
 		$post_data = $this->input->post();
 		
-		$check_user = $user->where(array(
+		$check_user = $user->where(
 							'email' => $post_data['email'],
-							'password' => md5($post_data['password'])
-						))->get();
+							'password' => $post_data['password']
+						)->get();
 
 		if($check_user->result_count() > 0)
 		{
@@ -55,14 +55,14 @@ class Main extends CI_Controller {
 	public function is_logged_in()
 	{
 		if($this->user_session['is_logged_in'])
-			redirect(base_url("/users/profile"));
+			return TRUE;
 		else
-			redirect(base_url("/users"));
+			return FALSE;
 	}
 	
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect(base_url());
+		redirect();
 	}
 }
