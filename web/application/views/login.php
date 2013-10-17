@@ -63,6 +63,131 @@
 			<img src="./assets/images/fb_login.png"  alt="" class="pull-right"/>
 			<div class="clearfix"></div>
 		</div>
+		<div class="span8">
+			<h3>Demonstrate each function from orm</h3>
+			
+			<h4>get() function</h4>
+<?php
+				$this->output->enable_profiler(TRUE);
+				$user = new User();
+				$users = $user->get();
+				
+				foreach($users as $user)
+				{	?>
+					<p><?= $user->first_name ?> <?= $user->last_name ?></p>
+<?php			}	?>
+			<h4>get_by_id() function</h4>
+<?php
+				$user_by_id = $user->get_by_id(4);
+				echo "<p>Id no:". $user_by_id->id ." ". $user_by_id->first_name ." ". $user_by_id->last_name . "</p>"; ?>
+			<h4>get_iterated() function</h4>
+<?php
+				$users_get_iterated = $user->get_iterated();
+				
+				foreach($users_get_iterated as $user)
+				{	?>
+					<p><?= $user->first_name ?> <?= $user->last_name ?></p>
+<?php			}	?>
+			<h4>all_to_array() function</h4>
+<?php
+				$users_all_to_array = $user->get()->all_to_array();
+				foreach($users_all_to_array as $user)
+				{	?>
+					<p><?= $user['first_name'] ?> <?= $user['last_name'] ?></p>
+<?php 			}	?>
+			<h4>save() function</h4>
+<?php 
+				// $user_save = new User();
+				// $user_save->first_name = "sample first_name";
+				// $user_save->last_name = "sample last_name";
+				// $user_save->email = "sample@yahoo.com";
+				// $user_save->password = md5("111111");
+					
+				// if($user_save->save())
+					// echo"user saved";
+				// else
+					// echo"not saved";
+?>
+			<h4>result_count() function</h4>
+<?= 		"There are: ". $users->result_count() . " users"	?>	
+			<h4>count() function</h4>
+<?= 		"There are: ". $users->count() . " users"	?>
+			<h4>include_related() and where() function</h4>
+<?php		
+			$user_group = new Group();
+			$user = $user_group->include_related('user',array('first_name','last_name','email'))
+							   ->where('user_id',3)
+							   ->get();	?>
+			<p>This User(<?= $user->user_first_name ?>) belongs to Group: <?= $user->name ?></p>
+			<p>Group info</p>
+			<ul>
+				<li>Name: <?= $user->name ?></li>
+				<li>Description: <?= $user->description ?></li>
+			</ul>
+			<p>User info</p>
+			<ul>
+				<li>Name: <?= $user->user_first_name ?> <?= $user->user_last_name ?></li>
+				<li>Email:  <?= $user->user_email ?></li>
+			</ul>
+			
+			<h4>update() and like() function</h4>
+<?php		
+			// $user_update = new User();
+			// if($user_update->like("first_name","replaced name")->update("first_name","ian paul"))
+				// echo"user updated";
+			// else
+				// echo"failed update";	
+?>
+			<h4>delete() function</h4>
+<?php 		
+			// $user_delete = new User();
+			// if($user_delete->where('id', 5)->get()->delete())
+				// echo "User deleted";
+			// else
+				// echo "Failed deletion";
+?>
+			<h4>delete_all() and limit() function</h4> 
+<?php
+			// $user_delete_all =  new User();
+			// $user_delete_all->like("first_name","sample")->limit(1)->get();
+			
+			// if($user_delete_all->delete_all())
+				// echo"User deleted all";
+			// else
+				// echo"Failed deletion";		
+?>
+			<h4>skip_validation() function</h4>
+<?php
+			//adds empty field
+			// $user_save = new User();
+			// $user_save->first_name = "";
+			// $user_save->last_name = "";
+			// $user_save->email = "";
+			// $user_save->password = "";
+			
+			// if($user_save->skip_validation()->save())
+				// echo "user skip validation success";
+			// else
+				// echo"save failed";	
+?>
+			<h4>select() and order_by() function</h4>
+<?php 			
+			// $users = new User();
+			// $users	 ->select("*")
+					 // ->order_by("id",desc)
+					 // ->get();
+					 
+			// var_dump($user_new->all_to_array());
+?>
+			<h4>group_by() function</h4>
+<?php	
+			$users = new User();
+			$users->group_by("last_name")->get();
+			
+			var_dump($users->all_to_array());
+?>
+	
+		</div>
 	</div>
 </body>
 </html>

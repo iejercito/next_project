@@ -2,7 +2,7 @@
 
 class User extends DataMapper{
 	
-	public $has_many = array('groups','group_members');
+	public $has_many = array('group','group_member');
 	
 	public $validation = array(
 		'first_name' => array(
@@ -15,18 +15,18 @@ class User extends DataMapper{
 		),
 		'password' => array(
 			'label' => 'Password',
-			'rules' => array('required')
+			'rules' => array('required', 'trim', 'min_length' => 6)
 		),
 		'email' => array(
 			'label' => 'Email',
-			'rules' => array('required')
+			'rules' => array('required','valid_email')
 		)
 	);
 	
 	
 	public function p_save($user)
 	{
-		$new_user = element(array('first_name', 'last_name', 'email','password'), $user, NULL);
+		$new_user = elements(array('first_name', 'last_name', 'email','password'), $user, NULL);
 		
 		$this->first_name = $new_user['first_name'];
 		$this->last_name = $new_user['last_name'];

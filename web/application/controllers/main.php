@@ -9,7 +9,7 @@ class Main extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$view_data["user_session"] = $this->user_session = $this->session-userdata('user_session');
+		$view_data["user_session"] = $this->user_session = $this->session->userdata('user_session');
 		$this->output->enable_profiler(FALSE);
 	}
 
@@ -23,10 +23,10 @@ class Main extends CI_Controller {
 		$user = new User();
 		$post_data = $this->input->post();
 		
-		$check_user = $user->where(
+		$check_user = $user->where(array(
 							'email' => $post_data['email'],
-							'password' => $post_data['password']
-						)->get();
+							'password' =>md5($post_data['password'])
+						))->get();
 
 		if($check_user->result_count() > 0)
 		{

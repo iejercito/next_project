@@ -29,7 +29,7 @@ class Users extends Main{
 		$user->last_name = $post_data['last_name'];
 		$user->email = $post_data['email'];
 		$user->password = $post_data['password'];
-		
+
 		if($user->p_save($post_data))
 		{
 			$data['status'] = TRUE;
