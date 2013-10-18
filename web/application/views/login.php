@@ -69,7 +69,7 @@
 			<h4>get() function</h4>
 <?php
 				$this->output->enable_profiler(TRUE);
-				$user = new User();
+				$user = new Users();
 				$users = $user->get();
 				
 				foreach($users as $user)
@@ -78,6 +78,7 @@
 <?php			}	?>
 			<h4>get_by_id() function</h4>
 <?php
+				$user->clear();
 				$user_by_id = $user->get_by_id(4);
 				echo "<p>Id no:". $user_by_id->id ." ". $user_by_id->first_name ." ". $user_by_id->last_name . "</p>"; ?>
 			<h4>get_iterated() function</h4>
@@ -90,7 +91,7 @@
 <?php			}	?>
 			<h4>all_to_array() function</h4>
 <?php
-				$users_all_to_array = $user->get()->all_to_array();
+				$users_all_to_array = $user->get()->to_array();
 				foreach($users_all_to_array as $user)
 				{	?>
 					<p><?= $user['first_name'] ?> <?= $user['last_name'] ?></p>
@@ -115,9 +116,11 @@
 			<h4>include_related() and where() function</h4>
 <?php		
 			$user_group = new Group();
-			$user = $user_group->include_related('user',array('first_name','last_name','email'))
-							   ->where('user_id',3)
+
+			$user = $user_group->include_related('users',array('first_name','last_name','email'))
+							   ->where('id',3)
 							   ->get();	?>
+
 			<p>This User(<?= $user->user_first_name ?>) belongs to Group: <?= $user->name ?></p>
 			<p>Group info</p>
 			<ul>
@@ -172,12 +175,12 @@
 ?>
 			<h4>select() and order_by() function</h4>
 <?php 			
-			// $users = new User();
-			// $users	 ->select("*")
-					 // ->order_by("id",desc)
-					 // ->get();
+			$users = new User();
+			$users->select("*")
+				  ->order("id",desc)
+				  ->get();
 					 
-			// var_dump($user_new->all_to_array());
+			var_dump($user_new->all_to_array());
 ?>
 			<h4>group_by() function</h4>
 <?php	

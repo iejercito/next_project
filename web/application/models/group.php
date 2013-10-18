@@ -2,11 +2,11 @@
 
 class Group extends DataMapper{
 	
-	public $has_one = array('user');
+	public $has_many = array('users');
 	
-	public function __construct($id = null)
+	public function __construct()
 	{
-		parent::__construct($id);
+		parent::__construct();
 	}
 }
 //eof
