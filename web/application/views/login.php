@@ -68,9 +68,14 @@
 			
 			<h4>get() function</h4>
 <?php
+<<<<<<< HEAD
 				$this->output->enable_profiler(TRUE); 
 /*
 				$user = new User();
+=======
+				$this->output->enable_profiler(TRUE);
+				$user = new Users();
+>>>>>>> aee9614c0030b4bed761c3570628df9984c7900e
 				$users = $user->get();
 				
 				foreach($users as $user)
@@ -92,7 +97,11 @@
 <?php			}	?>
 			<h4>all_to_array() function</h4>
 <?php
+<<<<<<< HEAD
 				$users_all_to_array = $user->get()->all_to_array();
+=======
+				$users_all_to_array = $user->get()->to_array();
+>>>>>>> aee9614c0030b4bed761c3570628df9984c7900e
 				foreach($users_all_to_array as $user)
 				{	?>
 					<p><?= $user['first_name'] ?> <?= $user['last_name'] ?></p>
@@ -176,6 +185,7 @@
 ?>
 			<h4>select() and order_by() function</h4>
 <?php 			
+<<<<<<< HEAD
 			// $users = new User();
 			// $users->select("*")
 				  // ->order_by("id","desc")
@@ -226,6 +236,23 @@
 			}
 			// var_dump($users);
 ?>
+=======
+			$users = new User();
+			$users->select("*")
+				  ->order("id",desc)
+				  ->get();
+					 
+			var_dump($user_new->all_to_array());
+?>
+			<h4>group_by() function</h4>
+<?php	
+			$users = new User();
+			$users->group_by("last_name")->get();
+			
+			var_dump($users->all_to_array());
+?>
+	
+>>>>>>> aee9614c0030b4bed761c3570628df9984c7900e
 		</div>
 	</div>
 </body>
