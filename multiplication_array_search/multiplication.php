@@ -10,8 +10,8 @@
 			$array_key[] = $key;
 			$array_answer[] = $answer;	
 		}		
-		$inner_arrays = array_combine($array_key, $array_answer);
-		$result[] = $inner_arrays;	
+		$combined_array = array_combine($array_key, $array_answer);
+		$result[] = $combined_array;	
 	}
 	
 	$search_value = (int)$_POST['search'];
@@ -24,12 +24,14 @@
 				foreach($values as $inner_key => $value)
 				{
 					if($search_value === $value)
-						$data['answer'] .= "<p class='well'> Outer array key: [" .$outer_key. "] Inner array key: [" .$inner_key. "] value: " .$search_value. "</p>";
+						$data['answer'] .=
+						"<p class='well'> Outer array key: [" .$outer_key. "] 
+						Inner array key: [" .$inner_key. "] value: " .$search_value. "</p>";
 				}	
 			}
 		}
 		else
-			$data['answer'] .= "<p class='alert alert-error'>Not found</p>";	
+			$data['answer'] .= "<p class='alert alert-error'>Number not found in multiplication table</p>";	
 	}	
 	echo json_encode($data);	
 ?>
