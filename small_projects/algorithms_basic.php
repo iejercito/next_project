@@ -67,4 +67,12 @@
 	$average = $sum / $key_of_numeric;
 	var_dump("Average number => " . round($average));
 	
+	echo "<h4>Algorithms Basic VII</h4>";
+	$y = 3;
+	$count_value = 0;
+	$compare_to_y = array(7,1,3,10);
+	foreach($compare_to_y as $array_in_y){
+		($array_in_y > $y) ? $count_value++ : "";
+	}
+	var_dump("Array greater than y =>" . $count_value);
 ?>
