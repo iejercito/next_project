@@ -12,92 +12,127 @@
 
 		<h4>Overview</h4>
 <?php	
-		function number(){
-			return 10;
-		}
-		$variable_number =  number();
-		echo (number() <= $variable_number) ? "Equal number" : "number greater than function";
-		
-		$x = array(1, 2, 5, 13, "Dojo");
+	function number()
+	{
+		return 10;
+	}
+	
+	$variable_number =  number();	
+	echo (number() <= $variable_number) ? "Equal number" : "number greater than function";	
 ?>
 	
 		<h4>Algorithms Example 1</h4>
 <?php
-		var_dump($x);
-		for($counter = 0; $counter <= 4; $counter++){
+		$x = array(1, 2, 5, 13, "Dojo");
+
+		for($counter = 0; $counter <= 4; $counter++)
+		{
 			if(isset($x[$counter]) == $x[$counter])
 				var_dump($x[$counter]);
 			else if(isset($x[$counter]) == "")
-				echo "empty array<br>";
+				echo "empty array <br>";
 		}
 ?>		
 		<h4>Algorithms Basic 1</h4>
 <?php
-		for($counter = 1; $counter<= 255; $counter++){
+		for($counter = 1; $counter <= 255; $counter++)
+		{
 			echo $counter .",";
 		}
 ?>		
 		<h4>Algorithms Basic II</h4>
 <?php
-		$number = 0;
-		for($counter = 0; $counter<= 255; $counter++){
-			echo "New number: " .$counter . " Sum " .$number = $number  + $counter ."<br>";
-			$number++;
+		$sum = 0;
+		for($counter = 0; $counter<= 255; $counter++)
+		{
+			echo "New number: " .$counter. " Sum " .$sum."<br>";
+			$sum += $counter;
+			$sum++;
 		}
 ?>		
 		<h4>Algorithms Basic III</h4>
 <?php
-		$numbers = array(4,2,100,30000,900000,-5,50000,-900);
-		$temp_number = 0;
-		foreach($numbers as $number){
-			if($temp_number < $number)
-				$max_number ="maximum number " . $temp_number = $number;
-			else if($number < 0)
-				$negative_number[] = "Negative numbers: " .$number;
+		$array_find_max = array(4,2,100,30000,900000,-5,50000,-900);
+		function find_max_array($arrays)
+		{
+			$temp_number = 0;
+			foreach($arrays as $array)
+			{
+				if($temp_number < $array)
+					$temp_number = $array;
+			}
+			echo "<p>Maximum number => ".$temp_number."";
 		}
-		var_dump($max_number, $negative_number);
+		find_max_array($array_find_max);
 ?>
 		
 		<h4>Algorithms Basic IV</h4>
 <?php
-		for($counter = 0; $counter <= 10; $counter++){
-			$values[] = $counter;
-			foreach($values as $value){}
+		$sample_values = array(6,5,4,3,2,1);
+		function return_all_values($arrays)
+		{
+			$total_values = 0;
+			foreach($arrays as $array)
+			{
+				$total_values++;
+			}
+			echo "Total values inside the array => " .$total_values;
 		}
-		var_dump("Total number of values inside array: " . $value);
+		return_all_values($sample_values);
 ?>		
 		<h4>Algorithms Basic V</h4>
 <?php
 		$numbers_strings = array("a",1,"b","c",3,4,5,"ian");
-		
-		foreach($numbers_strings as $number_string){
-			echo (is_numeric($number_string))
-			? " Numeric-> " .$number_string : " String-> " .$number_string;
+		function print_type_array($arrays)
+		{
+			foreach($arrays as $array)
+			{
+				if(is_numeric($array))
+					echo"<p>Its a number</p>";
+				else
+					echo"<p>Its a string</p>";
+			}
 		}
+		print_type_array($numbers_strings);
 ?>		
 		<h4>Algorithms Basic VI</h4>
 <?php
-		$sum = 0; 
-		$average = 0;
-		$key_of_numeric = 0;
-		foreach($numbers_strings as $value){
-			if(is_numeric($value)){
-				$sum += $value;
-				$key_of_numeric++;
-			}		
+		$numbers_strings = array("a",1,"b","c",3,4,5,"ian");
+
+		function sum_array($given_array)
+		{
+			$sum = 0;
+			$numeric_count = 0;
+			
+			foreach($given_array as $key => $value)
+			{
+				if(is_numeric($value)) 
+				{
+					$sum += $value;
+					$numeric_count++;
+				}
+			}
+			
+			return round($sum / $numeric_count);
 		}
-		$average = $sum / $key_of_numeric;
-		var_dump("Average number => " . round($average));
+		
+		echo sum_array($numbers_strings);
 ?>		
 		<h4>Algorithms Basic VII</h4>
 <?php
-		$y = 3;
-		$count_value = 0;
-		$compare_to_y = array(7,1,3,10);
-		foreach($compare_to_y as $array_in_y){
-			($array_in_y > $y) ? $count_value++ : "";
+		$compare_to_y = array(1,3,5,7);
+		function compare_to_y($arrays)
+		{
+			$y = 3;
+			$count_value = 0;
+			foreach($arrays as $array)
+			{
+				if($array > $y)
+					$count_value++;
+			}
+			return "Values greater than Y => " .$count_value;
 		}
-		var_dump("Array value greater than y => " . $count_value);
+		echo compare_to_y($compare_to_y);
 ?>
 	</div>
 </div>
