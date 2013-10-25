@@ -1,0 +1,91 @@
+Algorithm
+
+Overview
+This course is designed to help you think more like a computer. Luckily, the computer can only do a few things so as long as w know how to translate our thoughts to these basic instructions, we're good to go!
+
+The idea is this, try to have the computer do whatever you want to do using only the following instructions:
+
+    SET ___(variable name)____ to be _____(value in another variable, another value you explicitly state, value returned from a function)____.
+    IF _____(variable or value returned from a function)____ is (greater than, less than, or equal to) ______(value in another variable, another value you explicitly state, or value returned from a function)_____ do { ______ }
+    PRINT _____(string you specify)________.
+    GO TO line ________.
+
+The computer would run from your first instruction (line 1) and go down through each line of instruction until it reaches the end of your instructions. Provided below are things you can work on to start thinking about solving any problem using these sets of instructions.
+
+
+Example 1
+For example, let's say you want the computer to go through an array and print each of its value
+
+How would your instructions look like? Always start out with a base case (a simple case you want your program to solve first) and then generalize your codes.
+
+Your instruction may look like this when you're done:
+
+    SET x to be [ 1, 2, 5, 13, "Dojo" ]
+    PRINT x[0]
+    PRINT x[1]
+    PRINT x[2]
+    PRINT x[3]
+    PRINT x[4]
+
+This would work, but it would break if x was for example [2,3] or if x had more than 5 numbers. How would you be able to create something that would be safer and more scalable? The following may be better way of telling the computer what to do
+
+    SET x to be [ 1, 2, 5, 13, "Dojo" ]
+    SET counter to be 0
+    PRINT x[counter]
+    SET counter to be counter+1
+    GO TO LINE 3
+
+Now, the instructions below are better for handling more diverse sets of arrays but it would run forever as the computer would start from line 1, go through each line, and whenever it would go to line 5, it would go back to line 3 and so forth, causing an infinite loop! What may be a better way to do this? Let's say that you were also allowed to use a function called IS_SET which you can pass a variable (e.g. IS_SET(x[3])) and it would return 1 if that variable/index exists and 0 if it doesn't. Then, you could improve your instructions as follows:
+
+    SET x to be [ 1, 2, 5, 13, "Dojo" ]
+    SET counter to be 0
+    PRINT x[counter]
+    SET counter to be counter+1
+    IF ( IS_SET(x[counter]) is equal to 1) GO TO LINE 3
+
+This would now work for all cases of arrays! The art of computer science is basically to break down what you what to do to these smaller steps.
+
+Challenge
+
+    Would the above final codes work if x was empty or in other words it was just an empty array []? How would you modify your instructions with only using SET, PRINT, IF, GO TO, or IS_SET to work with an empty array as well?
+
+
+Basic I
+Write a program (sets of instructions) that would print a number from 1 to 255 
+
+
+Basic II
+ Write a program that would print the number from 0 to 255 but this time, it would also print the sum of the numbers that has been printed so far. For example, your output should be something like this
+
+New number: 0 Sum: 0
+New number: 1 Sum: 1
+New Number: 2 Sum: 3
+New number: 3 Sum: 6
+...
+New Number: 255 Sum: ___.
+
+
+Basic III
+Write a program (sets of instructions) that takes any array and finds the maximum value in the array. Your program should also work with the given array has all negative numbers (e.g. [-3, -5, -7]).
+
+Make sure you come up with a simple base case and write instructions to solve that base case first and then test your instructions for other complicated cases. 
+
+
+Basic IV
+Write a program(sets of instructions) that takes an array and returns the total number of values in the array. Come up with a base case and make sure your instructions works for the base case and then see if your instructions would also work for other more complex cases.
+
+Make sure you come up with a simple base case and write instructions to solve that base case first and then test your instructions for other complicated cases. 
+
+
+Basic V
+Write a function that goes through each value in the array and prints "it's a number!" or "it's a string" based on the value of the array. You're allowed to use a function called IS_NUMBER(). IS_NUMBER(value) that returns 1 if the value is a number and 0 if it's NOT a number. 
+
+
+Basic VI
+Write a program that takes an array, and prints the AVERAGE values in the array. If the array has string as its value, make sure it skips that value. For example for an array [1, 3, "hi"], your program should print an average of 2 when it's done. Again, make sure you come up with a simple base case and write instructions to solve that base case first and then test your instructions for other complicated cases. 
+
+
+Basic VII
+ Write a program that takes an array and returns the number of values in that array whose value is greater than y. For example if array = [1,3, 5, 7] and y = 3, after your program is run it will print 2 (since there are two values in the array whose value is greater than 3).
+
+Again, make sure you come up with a simple base case and write instructions to solve that base case first and then test your instructions for other complicated cases. 

@@ -1,0 +1,8 @@
+Intermediate III
+Write a program that takes an array of numbers and replaces any number that's negative to a string called 'Dojo'. For example if array = [-1, -3, 2] after your program is done array should be ['Dojo', 'Dojo', 2]. 
+
+
+Intermediate IV
+Now we're going to introduce another function called ARRAY_POP(); This method removes the last element/value in the array. For example say x = [1, 3, 5, 7]. Doing ARRAY_POP(x) would make x = [1, 3, 5].
+
+Now using this function, see how you could remove the last two values/elements in the given array. Would your program still work if the given array has less than two values? How could you write program so that it would work regardless of the size of the array you're given? 
