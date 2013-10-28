@@ -90,7 +90,13 @@
 				remove_negative($remove_negative);
 			?>
 			<h4>Intermediate VI</h4>
-			
+			<?php
+				$unique_character = array("c","o");
+				function check_unique()
+				{
+				
+				}
+			?>
 			<h4>Intermediate VII</h4>
 			<?php
 				
